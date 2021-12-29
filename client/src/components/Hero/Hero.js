@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Container } from "react-bootstrap";
 import ModalComponent from "../Modal/ModalComponent";
+import { useContext } from "react";
+import { UserContext } from "../../context";
 
 const HeroComponent = styled.header`
   padding: 5rem 0;
@@ -27,6 +29,8 @@ const SubHeading = styled.h3`
 `;
 
 export default function Hero() {
+  const { user } = useContext(UserContext);
+
   return (
     <HeroComponent>
       <Container>
@@ -36,8 +40,20 @@ export default function Hero() {
             Grow, learn and become more successful by reading some of the top
             articles by highly reputable individuals
           </SubHeading>
-          <ModalComponent text="Signup" variant="primary" isSignupFlow={true} />
-          <ModalComponent text="Log in" variant="danger" isSignupFlow={false} />
+          {!user.data && (
+            <>
+              <ModalComponent
+                text="Signup"
+                variant="primary"
+                isSignupFlow={true}
+              />
+              <ModalComponent
+                text="Log in"
+                variant="danger"
+                isSignupFlow={false}
+              />
+            </>
+          )}
         </HeaderContainer>
       </Container>
     </HeroComponent>

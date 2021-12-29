@@ -94,4 +94,18 @@ const login = async (req, res) => {
   });
 };
 
-module.exports = { signup, login };
+const getUser = async (req, res) => {
+  const user = await User.findOne({ email: req.user });
+
+  return res.json({
+    errors: [],
+    data: {
+      user: {
+        id: user._id,
+        email: user.email,
+      },
+    },
+  });
+};
+
+module.exports = { signup, login, getUser };

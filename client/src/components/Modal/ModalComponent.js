@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context";
 
 const ErrorMessage = styled.p`
   color: red;
@@ -14,32 +15,44 @@ export default function ModalComponent({ text, variant, isSignupFlow }) {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
+  const { setUser } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleClick = async () => {
-    let data;
+    let res;
     if (isSignupFlow) {
       const { data: SignupData } = await axios.post("/auth/signup", {
         email,
         password,
       });
-      data = SignupData;
+      res = SignupData;
     } else {
       const { data: loginData } = await axios.post("/auth/login", {
         email,
         password,
       });
-      data = loginData;
+      res = loginData;
     }
 
-    if (data.errors.length) {
-      return setErrorMsg(data.errors[0].msg);
+    if (res.errors.length) {
+      return setErrorMsg(res.errors[0].msg);
     }
 
-    localStorage.setItem("token", data.data.token);
+    setUser({
+      data: {
+        id: res.data.user.id,
+        email: res.data.user.email,
+      },
+      loading: false,
+      error: null,
+    });
+
+    localStorage.setItem("token", res.data.token);
+    axios.defaults.headers.common["authorization"] = `Bearer ${res.data.token}`;
     navigate("/articles");
   };
 
