@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 const LeftNavContainer = styled.div`
   margin-left: auto;
+  font-weight: 500;
 `;
 
 export default function Nav() {
@@ -20,9 +21,13 @@ export default function Nav() {
   };
 
   return (
-    <Navbar>
+    <Navbar bg="light" variant="light">
       <NavItem>
-        <Link to="/" className="nav-link">
+        <Link
+          to="/"
+          className="nav-link"
+          style={{ fontWeight: "500", fontSize: "1.5rem" }}
+        >
           Home
         </Link>
       </NavItem>

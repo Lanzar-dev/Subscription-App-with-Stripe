@@ -41,7 +41,6 @@ export default function ArticlePlans() {
   const fetchPrices = async () => {
     try {
       const { data: res } = await axios.get("/subs/prices");
-      //   console.log(res);
       setPrices(res.data);
     } catch (error) {
       console.log(error);
@@ -55,7 +54,6 @@ export default function ArticlePlans() {
   const createSession = async (priceId) => {
     try {
       const { data: res } = await axios.post("/subs/session", { priceId });
-
       window.location.href = res.url;
     } catch (error) {
       console.log(error);

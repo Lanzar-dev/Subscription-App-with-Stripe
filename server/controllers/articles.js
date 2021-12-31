@@ -23,7 +23,7 @@ const article = async (req, res) => {
   if (plan === "Basic") {
     const articles = await Article.find({ access: "Basic" });
     return res.json(articles);
-  } else if (plan === " Standard") {
+  } else if (plan === "Standard") {
     const articles = await Article.find({
       access: { $in: ["Basic", "Standard"] },
     });
