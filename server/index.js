@@ -3,6 +3,7 @@ const express = require("express");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/auth");
 const subsRoutes = require("./routes/subs");
+const articlesRoutes = require("./routes/articles");
 const cors = require("cors");
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use("/auth", authRoutes);
 app.use("/subs", subsRoutes);
+app.use("/articles", articlesRoutes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

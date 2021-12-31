@@ -26,6 +26,7 @@ const UserProvider = ({ children }) => {
         data: {
           id: res.data.user.id,
           email: res.data.user.email,
+          stripeCustomerId: res.data.user.stripeCustomerId,
         },
         loading: false,
         error: null,

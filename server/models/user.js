@@ -13,6 +13,10 @@ const userSchema = new Schema({
     required: true,
     min: 6,
   },
+  stripeCustomerId: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

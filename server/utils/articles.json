@@ -1,0 +1,20 @@
+[
+    {
+        "title": "How to get started with your coding journey as a newbie",
+        "imageUrl": "https://images.unsplash.com/photo-1520085601670-ee14aa5fa3e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ornare est vel laoreet lacinia. Etiam accumsan justo risus, vel lacinia ligula hendrerit non. Duis placerat a est sit amet accumsan. Aliquam ac consequat nunc. Integer imperdiet odio sed ex pellentesque dapibus ut ut velit. Cras nec euismod urna.",
+        "access": "Basic"
+    },
+    {
+        "title": "Resources to use to be a successful Software Developer",
+        "imageUrl": "https://images.unsplash.com/photo-1603969409447-ba86143a03f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ornare est vel laoreet lacinia. Etiam accumsan justo risus, vel lacinia ligula hendrerit non. Duis placerat a est sit amet accumsan. Aliquam ac consequat nunc. Integer imperdiet odio sed ex pellentesque dapibus ut ut velit. Cras nec euismod urna.",
+        "access": "Standard"
+    },
+    {
+        "title": "How to ace your interview and land your first tech job",
+        "imageUrl": "https://images.unsplash.com/photo-1581091870598-36ce9bad5c77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ornare est vel laoreet lacinia. Etiam accumsan justo risus, vel lacinia ligula hendrerit non. Duis placerat a est sit amet accumsan. Aliquam ac consequat nunc. Integer imperdiet odio sed ex pellentesque dapibus ut ut velit. Cras nec euismod urna.",
+        "access": "Premium"
+    }
+]

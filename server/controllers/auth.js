@@ -2,6 +2,7 @@ const { validationResult } = require("express-validator");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
+const stripe = require("../utils/stripe");
 
 const signup = async (req, res) => {
   const validationErrors = validationResult(req);
@@ -31,7 +32,18 @@ const signup = async (req, res) => {
   }
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
-  const newUser = await User.create({ email, password: hashedPassword });
+
+  //create the customer in stripe
+  const customer = await stripe.customers.create(
+    { email },
+    { apiKey: process.env.STRIPE_SECRET_KEY }
+  );
+
+  const newUser = await User.create({
+    email,
+    password: hashedPassword,
+    stripeCustomerId: customer.id,
+  });
 
   const token = await JWT.sign(
     { email: newUser.email },
@@ -45,6 +57,7 @@ const signup = async (req, res) => {
       user: {
         id: newUser._id,
         email: newUser.email,
+        stripeCustomerId: customer.id,
       },
     },
   });
@@ -103,6 +116,7 @@ const getUser = async (req, res) => {
       user: {
         id: user._id,
         email: user.email,
+        stripeCustomerId: user.stripeCustomerId,
       },
     },
   });
